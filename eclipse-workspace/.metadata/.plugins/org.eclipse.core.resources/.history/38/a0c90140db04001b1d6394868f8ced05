@@ -1,0 +1,48 @@
+package com.ti2cc;
+
+public class Principal {
+	
+	public static void main(String[] args) {
+		
+		DAO dao = new DAO();
+		
+		dao.conectar();
+
+		
+		//Inserir um elemento na tabela
+		Monitores monitores = new Monitores(11, "pablo", "diw",'M');
+		if(dao.inserirMonitores(monitores) == true) {
+			System.out.println("Inserção com sucesso -> " + monitores.toString());
+		}
+		
+		//Mostrar monitores do turno matutino		
+		System.out.println("==== Mostrar monitores do turno matutino === ");
+		Monitores[] monitor = dao.getMonitoresTurnoManha();
+		for(int i = 0; i < monitor.length; i++) {
+			System.out.println(monitor[i].toString());
+		}
+
+		//Atualizar monitores
+		monitores.setDisciplina("nova disciplina");
+		dao.atualizarMonitores(monitores);
+
+		//Mostrar monitores do sexo masculino
+		System.out.println("==== Mostrar monitores === ");
+		monitor = dao.getMonitores();
+		for(int i = 0; i < monitor.length; i++) {
+			System.out.println(monitor[i].toString());
+		}
+		
+		//Excluir monitores
+		dao.excluirMonitores(monitores.getId());
+		
+		//Mostrar usuários
+		monitor = dao.geMonitores();
+		System.out.println("==== Mostrar monitores === ");		
+		for(int i = 0; i < monitor.length; i++) {
+			System.out.println(monitor[i].toString());
+		}
+		
+		dao.close();
+	}
+}

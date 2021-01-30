@@ -1,0 +1,23 @@
+package com.ti2cc;
+
+public class Usuario {
+	private int codigo;
+	private String login;
+	private String senha;
+	private char sexo;
+	
+	public Usuario() {
+		this.codigo = -1;
+		this.senha = "";
+		this.login = "";
+		this.sexo = '*';
+	}
+	
+	public Usuario(int codigo, String login, String senha, char sexo) {
+		this.codigo = codigo;
+		this.senha = senha;
+		this.login = login;
+		this.sexo = sexo;
+	}
+
+}
